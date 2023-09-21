@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8pnbiaigdkyq"]
+
+[ext_resource type="Script" path="res://Players/Player.cs" id="1_2m7io"]
+[ext_resource type="Texture2D" uid="uid://uv1onnx5u788" path="res://Players/Rock/R.png" id="2_054s7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yi12u"]
+radius = 15.0
+
+[node name="Rock" type="CharacterBody2D"]
+script = ExtResource("1_2m7io")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yi12u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.90735e-06, 3.8147e-06)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_054s7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_yi12u")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
